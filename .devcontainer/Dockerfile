@@ -1,7 +1,20 @@
-FROM mcr.microsoft.com/devcontainers/rust:0-1-bullseye
+# Dockerfile
+FROM rust:latest
 
-# Include lld linker to improve build times either by using environment variable
-# RUSTFLAGS="-C link-arg=-fuse-ld=lld" or with Cargo's configuration file (i.e see .cargo/config.toml).
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-   && apt-get -y install clang lld \
-   && apt-get autoremove -y && apt-get clean -y
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-dev \
+    python3-venv \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+RUN python -m pip install --upgrade pip
+RUN pip install pytest black flake8
+
+RUN rustup update
+
+WORKDIR /workspace

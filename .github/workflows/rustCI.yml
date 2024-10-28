@@ -1,0 +1,35 @@
+name: Rust CI/CD Pipeline
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions-rs/toolchain@v1
+      with:
+          toolchain: stable
+          profile: minimal
+          components: clippy, rustfmt
+          override: true
+    - name: Update linux
+      run: sudo apt update 
+    - name: Install Rust dependencies
+      run: make rust_install
+    - name: Check Rust versions
+      run: make rust_version
+    - name: Format Rust code
+      run: make rust_format
+    - name: Lint Rust code
+      run: make rust_lint
+    - name: Run Rust tests
+      run: make rust_test
+    - name: Pull repository
+      run: git pull
+    - name: Generate and push logs
+      run: make generate_and_push
