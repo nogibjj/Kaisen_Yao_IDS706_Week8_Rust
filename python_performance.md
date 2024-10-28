@@ -1,2 +1,2 @@
-Elapsed time: 19684.98 microseconds
-Memory used: 0.49 MB
+Elapsed time: 18935.84 microseconds
+Memory used: -0.03 MB
