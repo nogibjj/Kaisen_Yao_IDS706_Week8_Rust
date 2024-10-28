@@ -45,3 +45,6 @@ Both implementations include automated CI/CD pipelines that:
 - Perform linting
 - Generate performance metrics
 - Push results to the repository
+
+## Reference:
+- Polars Library Documentation: [Polars in Python](https://pola.rs/docs/python/) | [Polars in Rust](https://pola.rs/docs/rust/)
