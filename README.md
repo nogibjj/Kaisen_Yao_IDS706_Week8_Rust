@@ -3,7 +3,7 @@
 
 # Kaisen_Yao_IDS706_Week8 - Data Analysis Performance Comparison: Python vs Rust
 
-This project implements identical data analysis tasks in both Python and Rust, utilizing the Polars library for data processing. The analysis is performed on the Data Engineer Salary 2024 dataset, with performance metrics tracked for both implementations.
+This project implements identical data analysis tasks in both Python and Rust, utilizing the Polars library for data processing. The analysis is performed on the US_births dataset, with performance metrics tracked for both implementations.
 
 ## Python Implementation
 
